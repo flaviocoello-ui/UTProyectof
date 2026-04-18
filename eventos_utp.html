@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos UTP</title>
+    <link rel="stylesheet" href="CSS/style_eventos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<!--Primera sección-->
+
+<body>
+    <header>
+        <nav class="header">
+            <a href="index.html"><button>Inicio</button></a>
+            <a href="eventos_utp.html"> <button class="active"> Eventos</button></a>
+            <a href="calendario_utp.html"><button>Calendario</button></a>
+        </nav>
+    </header>
+    <!--Segunda Sección-->
+    <div class="sup">
+        <div class="contenedor">
+            <h1> BIENVENIDO A EVENTOS UTP </h1>
+            <p> Bienvenido al Portal de Eventos UTP, una plataforma diseñada especialmente para la comunidad
+                universitaria UTPina.
+                Aquí podrás descubrir todos los Talleres, Conferencias, y Eventos Especiales que tenemos para TI.
+                Explora una amplia gama de actividades académicas, culturales y profesionales diseñadas para enriquecer
+                tu experiencia universitaria. </p>
+        </div>
+
+    </div>
+    <div class="contenido">
+
+        <div class="contenedor_izquierda">
+            <div class="seccion_izquierda">
+
+                <button class="none" onclick="activarBlackTheme()"><img class="logo-utp"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Utplogonuevo.svg/1280px-Utplogonuevo.svg.png"
+                        alt="Logo UTP"></button>
+                <h1 class="titulo-principal">Explora los Eventos de la UTP 🎉</h1>
+                <p class="descripcion-principal">Participa en talleres, conferencias y eventos que enriquecerán tu vida
+                    universitaria. ¡No te los pierdas!</p>
+
+                <div class="hovers">
+                    <div class="menu-hover">
+                        <button class="btn-menu">Talleres</button>
+                        <ul class="submenu">
+                            <!--Primer card-->
+                            <li class="item-hover">
+                                Karate Femenino (Principiante)
+
+                                <div class="card card-kfem"
+                                    onclick="inscribirseEvento('Karate Femenino (Principiante)')">
+                                    <h3> Karate Femenino Principiantes </h3>
+                                    <h5> Si te consideras una mujer fuera de serie; prepárate para un experiencia
+                                        intensa y
+                                        desafiente, que pondrá a prueba tus habilidades
+                                        para el Karate. ¡Hora de demostrar de lo que estás hecha!</h5>
+                                    <img class="imgcard"
+                                        src="https://elcomercio.pe/resizer/q8Ceo8f88E2K7g1kxHh3JT9KgNE=/1200x675/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/HUNXP3DIBBDQFILFJOL367JCKM.jpg">
+                                </div>
+
+                            </li>
+                            <!--Segundo card-->
+                            <li class="item-hover">
+                                Fútbol Masculino (Avanzado)
+
+                                <div class="card card-fmas" data-evento="Futbol Masculino Avanzado">
+                                    <h3> Futbol Masculino Avanzado </h3>
+                                    <h5> ¿Confías en tus habilidades futbolísticas? ¿Fútbol es tu segundo nombre? ¿O
+                                        simplemente
+                                        deseas
+                                        liberar el estrés de la rutina? ¡¿Qué mejor que entretenerse sanamente y
+                                        mantenerse
+                                        saludable?!
+                                        !No se diga más, y únete al Taller de Fútbol! </h5>
+                                    <img class="imgcard"
+                                        src="https://diariocorreo.pe/resizer/Dqziu9OmZj3K7CdOQsDakTy_cGw=/1200x900/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/7NLT4WBSEBFYNO7ELCLSGQXZ3E.jpg">
+                                </div>
+
+                            </li>
+                            <!--Tercer card-->
+                            <li class="item-hover">
+                                Ajedrez (Avanzado)
+                                <a href="registro_utp.html">
+                                    <div class="card card-ajedrez">
+                                        <h3> Taller de Ajedrez Avanzado </h3>
+                                        <h5> Si estás buscando un lugar acogedor donde practicar tu deporte favorito,
+                                            ¡el taller de ajedrez es el indicado para ti! En este taller descubrirás las
+                                            múltiples aperturas, defensa, gambitos y demás estrategias y técnicas para
+                                            mejorar
+                                            tu
+                                            ELO.
+                                            O simplemente pasar el tiempo con personas con tus mismos gustos e
+                                            intereses.
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://pm1.aminoapps.com/6865/a42bab58942c8d08a96669d5e6349b12645112bcr1-736-736v2_uhq.jpg">
+                                    </div>
+                                </a>
+                            </li>
+                            <!--Cuarto card-->
+                            <li class="item-hover">
+                                Taller de Música
+                                <a href="registro_utp.html">
+                                    <div class="card card-musica">
+                                        <h3> Taller de música para amateurs </h3>
+                                        <h5> Bienvenido al taller de música. Si tienes talento con algún instrumento
+                                            musical;
+                                            siéntete
+                                            plenamente invitado a pertenecer a nuestro club. Con la música comunicamos
+                                            nuestros
+                                            más
+                                            profundos sentimientos
+                                            plasmados en una partitura, tablatura, en un excéntrico arreglo de guitarra
+                                            o en
+                                            un
+                                            conmovedor arpegio de piano.
+                                        </h5>
+
+                                        <img class="imgcard"
+                                            src="https://media.tenor.com/adoVIoM4eo4AAAAM/keyboard-cat.gif">
+
+                                    </div>
+                                </a>
+                            </li>
+                            <!--Quinto card-->
+                            <li class="item-hover">
+                                Oratoria
+                                <a href="registro_utp.html">
+                                    <div class="card card-oratoria">
+                                        <h3> Taller de Oratoria </h3>
+                                        <h5> Te damos una cálida bienvenida a el taller de Oratoria. Aquí tendrás la
+                                            oportunidad
+                                            de
+                                            mejorar tus
+                                            estrategias de comunicación. El poder comunicar y el cómo lo comunicamos es
+                                            sin
+                                            dudas
+                                            imprescindible
+                                            para un adecuado desenvolvimiento académico. No cometer el pecado de
+                                            subestimar
+                                            el
+                                            poder
+                                            de la palabra.
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://mendozatoday.com.ar/wp-content/uploads/2025/02/Trump-Zelenski.gif">
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-hover">
+                        <button class="btn-menu">Conferencias</button>
+                        <ul class="submenu">
+                            <li class="item-hover">
+                                Conferencia Vida Universitaria y Pre-profesional
+                                <a href="registro_utp.html">
+                                    <div class="card card_softskills">
+                                        <h3> Habilidades Blandas: Un enfoque radical </h3>
+                                        <h5> ¡Descubre el poder de las habilidades blandas en tu crecimiento
+                                            profesional!
+                                            Esta conferencia académica te ayudará a potenciar tu comunicación,
+                                            liderazgo,
+                                            trabajo en
+                                            equipo y adaptación al cambio. Aprende a destacar más allá del conocimiento
+                                            técnico
+                                            y
+                                            prepárate
+                                            para los desafíos del mundo real. 💡 ¡Una oportunidad que todo estudiante
+                                            debe
+                                            aprovechar!
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://jamming.pe/wp-content/uploads/2022/08/habilidades-blandas.jpg">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                Conferencia sobre el embarazo prematuro
+                                <a href="registro_utp.html">
+                                    <div class="card card_emb">
+                                        <h3> Hablemos sobre el embarazo adolescente...</h3>
+                                        <h5> El embarazo adolescente es una problemática social y de salud pública que
+                                            afecta
+                                            profundamente el desarrollo educativo,
+                                            emocional y económico de miles de jóvenes. Esta conferencia busca generar
+                                            conciencia
+                                            crítica y promover
+                                            espacios de diálogo para comprender sus causas, consecuencias y posibles
+                                            soluciones
+                                            desde una perspectiva integral.
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://287524.fs1.hubspotusercontent-na1.net/hubfs/287524/Imported_Blog_Media/Depositphotos_57499875_xl-2015-Dec-17-2022-07-22-10-7385-PM.jpg">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                Conferencia sobre la Depresión
+                                <a href="registro_utp.html">
+                                    <div class="card card_depresion">
+                                        <h3> Depresión: como salir.</h3>
+                                        <h5> La depresión no siempre se nota, pero pesa. Esta conferencia busca abrir un
+                                            espacio
+                                            sincero para comprender lo que realmente
+                                            significa vivir con ella, romper el silencio y aprender a tender la mano.
+                                            Porque hablar alivia y salva, nadie debería atravesarlo solo. 💙
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://gifdb.com/images/thumbnail/jesse-pinkman-depressed-13ar51ptt5pwlcyj.gif">
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="item-hover">
+                                Conferencia de Empleabilidad
+                                <a href="registro_utp.html">
+                                    <div class="card card_emplea">
+                                        <h3> Descubre la bolsa de trabajo UTP</h3>
+                                        <h5> ¿Estás listo para tu próximo paso profesional? 💼 Esta conferencia sobre
+                                            empleabilidad
+                                            te dará herramientas clave para
+                                            destacar en el mercado laboral actual: cómo preparar tu CV, enfrentar
+                                            entrevistas y
+                                            potenciar tu perfil.
+                                            No es solo teoría, es preparación real para un futuro que empieza hoy.
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://media0.giphy.com/media/hWMUWy03CTJc7inIEN/giphy.gif?cid=6c09b952s6pt7qjtnib9qpl8r8eh0ofszeimbg5zla1rxgn3&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                Conoce al nuevo Papa: León XIV
+                                <a href="registro_utp.html">
+                                    <div class="card card_papa">
+                                        <h3> Habemus Papam: Robert Prevost Martinez</h3>
+                                        <h5> Acompáñanos en una conferencia especial dedicada a monseñor Robert Prevost.
+                                            Conocido
+                                            por su profunda conexión con el Perú, fue obispo de
+                                            Chiclayo y comenzó su servicio episcopal en Chulucanas, donde dejó una
+                                            huella
+                                            significativa en la vida pastoral y
+                                            social de la región.</h5>
+                                        <img class="imgcard"
+                                            src="https://media.todojujuy.com/adjuntos/227/imagenes/003/402/0003402195.gif">
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="menu-hover">
+                        <button class="btn-menu">Eventos Especiales</button>
+                        <ul class="submenu">
+                            <li class="item-hover">
+                                Campaña de Salud e ITS
+                                <a href="registro_utp.html">
+                                    <div class="card card.salud" id="cardsalud">
+                                        <h3> Prótege de las ITS: No solo es el VIH</h3>
+                                        <h5> Únete a nuestra campaña académica para la prevención de Infecciones de
+                                            Transmisión
+                                            Sexual (ITS),
+                                            donde fomentaremos la educación sobre estas enfermedades y su prevención.
+                                            Ofreceremos
+                                            información clave sobre
+                                            prácticas sexuales seguras, el uso de protección y la importancia de las
+                                            pruebas
+                                            regulares.
+                                            Además, realizaremos exámenes gratuitos de detección de ITS para
+                                            estudiantes,
+                                            garantizando confidencialidad
+                                            y apoyo profesional.
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://portal.irencentro.gob.pe/wp-content/uploads/2024/11/01-UTP-Foto-Grupal-700x500.jpeg">
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="item-hover">
+                                UTP Cinema
+                                <a href="registro_utp.html">
+                                    <div class="card card.cinema" id="cardcinema">
+                                        <h3> Fresas Salvajes</h3>
+                                        <h5> Fresas Salvajes relata la historia del doctor Isak Borg quién recibirá su
+                                            jubileo
+                                            en
+                                            Lund, Suecia, acompañado de su infeliz nuera Marianne.
+                                            Durante el trayecto, Isak reflexiona acerca de su vida; sobre su matrimonio
+                                            fallido,
+                                            la
+                                            distante relación con su hijo y otros recuerdos de su juventud.
+                                            Soledad, arrepentimiento y redención son las etiquetas de esta obra maestra.
+                                        </h5>
+                                        <img class="imgcard" src="https://i.gifer.com/UNSB.gif">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                Bienvenida Cachimbos 2025
+                                <a href="registro_utp.html">
+                                    <div class="card card.cachimbos" id="cardcachimbos">
+                                        <h3> ¡Bienvenidos Cachimbos!</h3>
+                                        <h5> ¡Hey Cachimbo!¡Celebremos tu ingreso a la universidad a lo grande! Tu
+                                            esfuerzo
+                                            merece
+                                            ser recompensado,
+                                            es por ello que la Universidad Tecnológica del Perú ha preparado un día
+                                            especial
+                                            para
+                                            ti, donde tendremos muchos eventos,
+                                            concursos, bandas invitadas y shows en vivo. ¡¿Te lo vas a perder?! 😎🤘
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://mentor.pe/wp-content/uploads/2024/02/chicas-bienvenida-utp-1024x576.jpg">
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="item-hover">
+                                FIL-ICA x UTP
+                                <a href="registro_utp.html">
+                                    <div class="card card.filutp" id="cardfilutp">
+                                        <h3> FIL-ICA x UTP</h3>
+                                        <h5> La Feria internacional del Libro ICA se realizará del 9 al 22 de Junio. La
+                                            UTP
+                                            está comprometida a difundar la lectura en los jóvenes estudiantes, por ello
+                                            se
+                                            llevará
+                                            a cabo un evento especial
+                                            en el campus ICA donde los estudiantes podrán compartir sus obras literarias
+                                            producto
+                                            propio de ellos para compartirlo
+                                            con toda la comunidad universitaria; la mejor obra tendrá una recompensa y
+                                            será
+                                            presentada en la FIL-ICA 2025.
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://i.pinimg.com/originals/4a/65/ab/4a65abeead3a8d113bccfee5d5d239f4.gif">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                HACKATHON UTP 2025
+                                <a href="registro_utp.html">
+                                    <div class="card card.hackathonutp" id="cardhackathonutp">
+                                        <h3> HACKATHON UTP</h3>
+                                        <h5> ¡Finalmente está aquí! ¡La HACKATHON UTP vuelve recargada este 2025! En
+                                            este
+                                            concurso desarrollarán
+                                            un producto mínimo viable (software) que permita darle solución
+                                            a una problemática de carácter social. ¿Estás preparado? ¡¿Qué esperas para
+                                            darle a
+                                            ese botón de "Quiero saber más"?!
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://xr.engin.umich.edu/wp-content/uploads/2023/03/unnamed-1.gif">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                Concurso de Cosplay
+                                <a href="registro_utp.html">
+                                    <div class="card card.cosplayutp" id="cardcosplayutp">
+                                        <h3> CONCURSO DE COSPLAY</h3>
+                                        <h5> ¡Prepárate para liberar tu lado más épico! 🎭 Este viernes, la universidad
+                                            se
+                                            llena
+                                            de magia con nuestro Concurso de Cosplay:
+                                            anime, videojuegos, series y más. Ven con tu mejor traje,
+                                            gana premios y pásala brutal. ¡No importa si eres héroe, villano o waifu,
+                                            este
+                                            evento es para ti! 🚀✨
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://lacamara.pe/wp-content/uploads/2022/10/INFORME-ESPECIAL-1049.jpg">
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="item-hover">
+                                Concurso de Bandas
+                                <a href="registro_utp.html">
+                                    <div class="card card.bandasutp" id="cardbandasutp">
+                                        <h3> CONCURSO DE BANDAS</h3>
+                                        <h5> ¡Este sábado vive el poder de la música en nuestro Concurso de Bandas
+                                            Universitario! 🎸
+                                            Si tienes una banda, este es tu momento para brillar. Y si vienes como
+                                            público,
+                                            prepárate para
+                                            una noche llena de talento, ritmo y buena vibra.
+                                        </h5>
+                                        <img class="imgcard" src="https://i.gifer.com/Mhyl.gif">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                ECUP UTP
+                                <a href="registro_utp.html">
+                                    <div class="card card.ecuputp" id="cardecuputp">
+                                        <h3> ECUP UTP </h3>
+                                        <h5> 🏆 ¡La llegó la E-Cup UTP y la emoción está al máximo! 🎮
+                                            Demuestra tu habilidad en los esports, ya sea en solitario o con tu team.
+                                            Competencia, premios y pura
+                                            adrenalina gamer te esperan.¿Estás listo para ser leyenda? 🔥¡Inscríbete y
+                                            vive
+                                            la
+                                            experiencia UTP
+                                            al máximo! 🎧
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://myi.agency/wp-content/uploads/2025/02/Case_Header_TCS.gif">
+                                    </div>
+                                </a>
+
+                            </li>
+                            <li class="item-hover">
+                                Feria de Emprendimiento
+                                <a href="registro_utp.html">
+                                    <div class="card card.emprendimientoutp" id="cardemprendimientoutp">
+                                        <h3> Feria de Emprendimiento </h3>
+                                        <h5> Ha llegado la Feria de Emprendimientos Estudiantiles
+                                            ¿Tienes un proyecto, marca o idea de negocio? Muéstralo al mundo.
+                                            Conecta, vende, haz contactos y haz que todos hablen de ti.
+                                            ¡La creatividad también se lleva en la mochila! 💡🛍️
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://www.guatemala.com/fotos/2018/10/giphyemprende.gif">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="item-hover">
+                                Fito Páez
+                                <a href="registro_utp.html">
+                                    <div class="card card.fitopaez" id="cardfitopaez">
+                                        <h3> Fito Páez en la UTP </h3>
+                                        <h5> Nos complace anunciar la visita de uno de los grandes referentes de la
+                                            música
+                                            en
+                                            español. Fito Páez estará
+                                            proximamente en el campus para celebrar el aniversario de la Universidad
+                                            Tecnológica
+                                            del Perú, el evento será de acceso
+                                            libre para todos. Este evento será una oportunidad única para disfrutar de
+                                            su
+                                            arte
+                                            en un ambiente universitario.
+                                            ¡Una experiencia que no te puedes perder! 🎶
+                                        </h5>
+                                        <img class="imgcard"
+                                            src="https://s3.amazonaws.com/rtvc-assets-senalmemoria.gov.co/s3fs-public/imce/IMAGENES/Fito%20Paez.gif">
+                                    </div>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div> <!--menu hover termina aquí-->
+                </div>
+            </div> <!--Termina sec. izquierda-->
+            <div class="seccion_izquierda_inferior">
+                <div class="carrusel-container">
+                    <div class="carrusel-track">
+                        <div class="carrusel-slide">
+                            <h2>🎓 Talleres</h2>
+                            <p> En los talleres puedes aprovechar tu tiempo libre en la universidad para
+                                practicar algún deporte, un hobbie o simplemente algo que disfrutes hacer. </p>
+                        </div>
+                        <div class="carrusel-slide">
+                            <h2>💻 Conferencias</h2>
+                            <p> Las conferencias permiten conocer un lado más profundo sobre la vida universitaria,
+                                problemáticas sociales, y demás tópicos que atañen al interés público.
+                            </p>
+                        </div>
+                        <div class="carrusel-slide">
+                            <h2>🎭 Eventos Especiales</h2>
+                            <p> ¡Los eventos especiales son de las ocasiones en los que el entretenimiento está
+                                asegurado!¡Pon a prueba tus habilidades en actividades extracurrículares!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="seccion_central">
+            <div class="suerte-box">
+                <h4>¿No te puedes decidir?</h4>
+                <p>Genera un evento aleatorio aquí</p>
+                <button class="btn_box_suerte" onclick="generarEvento()">Voy a tener suerte</button>
+                <div id="eventoSeleccionado">Aquí se mostrará tu evento aleatorio</div>
+            </div>
+        </div>
+        <!--Tercera sección-->
+        <div class="seccion_derecha">
+            <section class="proximos_eventos">
+                <div class="text_proximos">
+                    <h2>📌 Próximos films en UTP CINEMA </h2>
+                    <p> ¡No puedes perderte estos próximos films! </p>
+                </div>
+                <div class="panel_proximos">
+                    <div class="autodeslizar_proximos">
+                        <article class="evento_enc">
+                            <h3> Pulp Fiction (1994) </h3>
+                            <p> 👉 "Say 'what' again! Atrévete a vivir el estilo y el caos de Pulp Fiction en
+                                UTP
+                                Cinema — solo para verdaderos cinéfilos 🔫💉🥊
+                            </p>
+                            <div class="event_img_btn">
+                                <img class="imgevento_proximo"
+                                    src="https://64.media.tumblr.com/3db7263236477229421cfa463996e9b7/ffc7b7c67fbcf19d-27/s540x810/89916ea2f9e73f76421e7d5a297c72af4f904ee0.gif">
+                                <a href="evento1.html"><button class="btn_event_proximo"> Descubrir
+                                        Evento</button></a>
+                            </div>
+
+                        </article>
+
+                        <article class="evento_enc">
+                            <h3> Apocalypse Now (1967)</h3>
+                            <p> Sumérgete en la oscuridad de la guerra y la locura humana con Apocalypse Now en
+                                UTP
+                                Cinema — una experiencia cinematográfica intensa e inolvidable. 🎥🌌
+                            </p>
+                            <div class="event_img_btn">
+                                <img class="imgevento_proximo"
+                                    src="https://64.media.tumblr.com/f4db68bde5038878119cb6c24423a42d/7abd60c168da6b01-6f/s540x810/ff73840dc16aa73c0e689f65e5de5892fdeeaa3a.gif">
+                                <a href="evento2.html"><button class="btn_event_proximo"> Descubrir
+                                        Evento</button></a>
+                            </div>
+
+
+                        </article>
+
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+
+
+    <footer>
+        <div class="footer-bottom">
+
+            <!-- Superior -->
+            <div class="footer-superior">
+                <div class="foot-sup-text">
+                    <p>Nosotros</p>
+                    <p>Síguenos</p>
+                    <p>Contáctanos</p>
+                </div>
+            </div>
+
+            <!-- Medio -->
+            <div class="footer-medio">
+                <div class="foot-med-text">
+
+                    <!-- Texto Institucional -->
+                    <div class="textUno">
+                        <a href="https://es.wikipedia.org/wiki/Universidad_Tecnol%C3%B3gica_del_Per%C3%BA">
+                            La Universidad Tecnológica del Perú (UTP)<br>
+                            es una institución privada fundada en 1997<br>
+                            y parte del grupo Intercorp, con enfoque real<br>
+                            en carreras de demanda en el mundo laboral.<br>
+                            Ofrece ingeniería, negocios y tecnología.<br>
+                            También salud, diseño y otras disciplinas más.<br>
+                            Cuenta con sedes en todo el territorio peruano<br>
+                            y educación flexible con recursos digitales.
+                        </a>
+                    </div>
+
+                    <!-- Redes Sociales -->
+                    <div class="textDos social-icons">
+                        <a href="https://www.facebook.com/UTP.Peru"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/universidadutp"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://pe.linkedin.com/school/utp-universidad-tecnologica-del-peru/"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@sorprendeteutp"><i class="fab fa-youtube"></i></a>
+                    </div>
+
+                    <!-- Contacto -->
+                    <div class="textTres">
+                        <p>
+                            Alumnos (SAE):<br>
+                            Lima: (01) 315 9600 | Provincia: 0801 19 600<br>
+                            WhatsApp:
+                            <a
+                                href="https://api.whatsapp.com/send?phone=51960252970&text=Hola!+Escr%C3%ADbenos+tu+consulta+por+aqu%C3%AD%C2%A0">
+                                bit.ly/contacto_SAE
+                            </a><br>
+                            Correo: utpica@hotmail.com
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Inferior -->
+            <div class="footer-inferior">
+                <div class="foot-inf-text">
+                    <div>© 2025 Fulume. Todos los derechos reservados.</div>
+                    <div class="links">
+                        <a href="#">Política de Privacidad</a>
+                        <a href="#">Términos de Servicio</a>
+                        <a href="#">Configuración de Cookies</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <div id="modal-musica" class="oculto">
+        <div class="modal-contenido">
+            <div class="disco"></div>
+            <div class="info-musica">
+                <p class="escuchando">🎧 Estás escuchando</p>
+                <h3 class="titulo-cancion">A Seagull & Clouds</h3>
+                <p class="artista">Artista: Atmospheric Loops</p>
+            </div>
+        </div>
+    </div>
+    <div id="mini-widget" class="">
+        <div class="info">
+            <span class="estado">🔊</span>
+            <div class="texto">
+                <p class="titulo-mini">A Seagull & Clouds</p>
+                <p class="artista-mini">Atmospheric Loops</p>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL DE INSCRIPCIÓN -->
+    <div id="inscripcion-overlay" class="inscripcion-overlay is-hidden">
+        <div class="inscripcion-modal">
+            <span class="cerrar-inscripcion" onclick="cerrarInscripcionModal()">&times;</span>
+            <h2>Formulario de Inscripción</h2>
+            <form id="formulario-inscripcion-utp">
+                <input type="text" id="inscripcion-nombre" name="usuario" required />
+                <input type="email" id="inscripcion-email" name="email" required />
+                <input type="text" id="inscripcion-evento" name="evento" readonly />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="JS/eventos_utp.js"></script>
+</body>
+
+</html>

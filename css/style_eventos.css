@@ -1,0 +1,881 @@
+html {
+    font-size: 62.5%;
+    width: 100vw;
+}
+
+body {
+    background-color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+    overflow-x: hidden;
+    width: 100vw;
+    background-image: url(https://images4.alphacoders.com/788/788878.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+
+
+}
+
+body {
+    animation: slideInUp 2s ease;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+.header button {
+    margin: 0 0.5rem;
+    padding: 1rem 2rem;
+    background-color: black;
+    color: white;
+    border: 0.2rem solid white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s;
+}
+
+.header button.active {
+    background-color: white;
+    color: black;
+}
+
+.header button:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-0.2rem)
+}
+
+nav a {
+    color: #ccc;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+.none {
+    border: none;
+    background-color: transparent;
+}
+
+
+.logo-utp {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.logo-utp:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+
+.titulo-principal,
+.descripcion-principal {
+    min-width: 10rem;
+    max-width: 25rem;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-left: 5%;
+
+}
+
+.sup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contenedor {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* fondo semitransparente */
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 70%;
+    position: absolute;
+    margin-top: 50%;
+}
+
+.contenedor {
+    animation: slideInUp 1s ease-out 0.7s forwards;
+    opacity: 0;
+}
+
+.contenido {
+    margin-top: 50%;
+    background-color: rgba(255, 255, 255, 0.358);
+    display: flex;
+
+}
+
+.contenedor_izquierda {
+    width: 18%;
+    padding: 2rem;
+    margin-top: 2%;
+}
+
+.seccion_izquierda_inferior {
+    margin-top: 50%;
+    padding: 2rem;
+}
+
+
+.seccion_derecha {
+    width: 40%;
+    padding: 2rem;
+    margin-right: 2%;
+    margin-top: 2%;
+
+}
+
+.seccion_central {
+    width: 30%;
+    padding: 2rem;
+    margin-top: 2%;
+
+
+}
+
+
+
+/* Menu desplegable*/
+
+
+.menu-hover {
+    position: relative;
+    padding: 1.2rem;
+    width: 100%;
+    min-width: 10rem;
+    max-width: 20rem;
+
+}
+
+.btn-menu {
+    width: 100%;
+    max-width: 20rem;
+    min-width: 1rem;
+    background-color: black;
+    color: white;
+    padding: 1.2rem 2.5rem;
+    /*especi de width*/
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.6s ease-out;
+}
+
+
+.btn-menu:hover {
+    background: crimson;
+    transform: scale(1.1);
+}
+
+.submenu {
+    width: 100%;
+    min-width: 10rem;
+    display: none;
+    position: absolute;
+    /*INTERSANTE CAMBIAR, NO BORRAR POR AHORA*/
+    background-color: white;
+    color: black;
+    box-shadow: 0px 1rem 2rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.8rem;
+    padding: 0;
+    left: 100%;
+    top: -10rem;
+    z-index: 12;
+
+}
+
+.submenu li {
+    padding: 1.2rem;
+    z-index: 100;
+    list-style: none;
+    border-bottom: 0.1rem solid #ddd;
+    transition: background 0.2s ease;
+
+}
+
+
+/**/
+.card {
+
+    display: none;
+    position: absolute;
+    background: linear-gradient(white, rgb(217, 250, 244));
+    border-radius: 1rem;
+    color: black;
+    z-index: 100;
+    width: 350%;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    margin-top: -5rem;
+    left: 100%;
+    transition: transform 0.4s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.item-hover:hover .card {
+    display: flex;
+}
+
+/**/
+.submenu li:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.menu-hover:hover .submenu {
+    /* . submenu fija el menu que se mostrará*/
+    display: block;
+    /*Cambia de none-> block (es decir, activa el display*/
+    animation: fadeInDown 0.4s ease-out;
+}
+
+@keyframes fadeInDown {
+
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+.imgcard {
+    /* no sirve declara para cada .imgcard de card_img_btn*/
+    max-width: 100%;
+    max-height: 20rem;
+    box-sizing: border-box;
+    border-radius: 0.8rem;
+
+
+}
+
+
+h3 {
+    margin: 1.5rem;
+    text-align: center;
+    align-content: center;
+}
+
+h5 {
+    margin: 1rem;
+    text-align: justify;
+    align-content: center;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.suerte-box {
+    max-width: 28rem;
+    min-width: 14rem;
+    background: linear-gradient(rgb(189, 199, 225), rgb(210, 182, 193));
+    border: 0.2rem #262726;
+    border-radius: 1.2rem;
+    padding: 2rem;
+    margin: 3rem auto 0 auto;
+    /* centrar dentro del section izquierda */
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-family: sans-serif;
+    z-index: 1;
+    height: 50rem;
+    /* por debajo de tu menú hover si usa z-index mayor */
+}
+
+.suerte-box h4 {
+    font-size: 1.8rem;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.suerte-box p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.suerte-box button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 1rem 1.6rem;
+    border-radius: 0.6rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+
+}
+
+.suerte-box button:hover {
+    background-color: crimson;
+    transform: scale(1.01);
+}
+
+#eventoSeleccionado {
+
+    border: 0.1rem dashed #bbb;
+    border-radius: 1rem;
+    background: #ffffffa0;
+    padding: 1.2rem;
+    font-size: 1.4rem;
+    color: #444;
+    box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    height: 33rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+.proximos_eventos {
+    font-size: 2.5rem;
+    color: black;
+    height: 90%;
+    background: linear-gradient(135deg, #1a1a1d, #4e4e50, #6f2232, #950740);
+    padding: 4rem;
+    border-radius: 1.5rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    z-index: 1;
+
+}
+
+.proximos_eventos h2 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.proximos_eventos p {
+    font-size: 1.6rem;
+    color: #ffffff;
+}
+
+.imgevento_proximo {
+    max-width: 100%;
+    max-height: auto;
+    display: block;
+    width: 100%;
+    border-radius: 0.8rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.5);
+
+}
+
+.btn_event_proximo {
+    font-family: 'Courier New', Courier, monospace;
+    width: 20rem;
+    min-width: 8rem;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    color: white;
+    border-color: white;
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn_event_proximo:hover {
+    background-color: #cccccc85;
+
+}
+
+.event_img_btn {
+
+    position: relative;
+    width: 100%;
+    height: auto;
+
+}
+
+.carrusel-container {
+    width: 300%;
+    z-index: 10;
+    max-width: 80rem;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    position: relative;
+    /* Asegura el posicionamiento relativo */
+}
+
+.carrusel-track {
+    display: flex;
+    transition: transform 1s ease;
+    width: 100%;
+    /* Esta línea es opcional, puedes mantenerla o no */
+}
+
+.carrusel-slide {
+    flex: 0 0 100%;
+    /* 👈 CLAVE: Asegura que cada slide ocupe el 100% exacto del contenedor */
+    padding: 2rem;
+    text-align: center;
+    background: #e7f5ff;
+    box-sizing: border-box;
+    /* 👈 Asegura que padding no rompa el ancho */
+}
+
+
+.carrusel-slide h2 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.carrusel-slide p {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.footer-bottom {
+    background-color: #000;
+    color: #fff;
+    padding: 5rem 2rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    box-sizing: border-box;
+}
+
+/* SECCIÓN SUPERIOR */
+.footer-superior .foot-sup-text {
+    display: inline-flex;
+    gap: 40rem;
+    font-size: 2.4rem;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+/* .textUno{
+    min-width: 100rem;
+} */
+/* SECCIÓN MEDIA */
+.footer-medio .foot-med-text {
+    display: flex;
+    gap: 25rem;
+    padding: 0 1rem;
+    text-align: justify;
+}
+
+
+/* ENLACES Y TEXTO INSTITUCIONAL */
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: crimson;
+}
+
+/* ÍCONOS SOCIALES */
+.social-icons {
+    display: flex;
+    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #000;
+    font-size: 2.4rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+/* SECCIÓN INFERIOR */
+.footer-inferior .foot-inf-text {
+    text-align: center;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 2rem;
+    font-size: 1.2rem;
+}
+
+@media (max-width:70rem) {
+    html {
+        font-size: 50%;
+
+    }
+
+
+    .card {
+        width: 180%;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        margin-top: -5rem;
+        left: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imgcard {
+        width: 100%;
+        height: auto;
+        max-height: 20rem;
+        border-radius: 0.8rem;
+        object-fit: contain;
+    }
+
+    .btn_event_proximo {
+        width: 15rem;
+        font-size: 1rem;
+    }
+
+    .contenedor {
+        font-size: 90%;
+    }
+
+    #eventoSeleccionado {
+        height: 50%;
+    }
+
+    .suerte-box {
+        width: 18%;
+        height: 45rem;
+    }
+
+    .footer-superior .foot-sup-text {
+        gap: 25rem;
+
+    }
+
+    /* SECCIÓN MEDIA */
+    .footer-medio .foot-med-text {
+
+        gap: 12.5rem;
+
+    }
+
+    .footer-bottom {
+        height: 40rem;
+    }
+
+}
+
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes getVisible {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#modal-musica {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    z-index: 9999;
+}
+
+#modal-musica.activo {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-contenido {
+    background: #ffffffdd;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    animation: aparecer 0.5s ease forwards;
+}
+
+@keyframes aparecer {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.disco {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #333 20%, #111 80%);
+    border: 6px solid #666;
+    animation: girar 4s linear infinite;
+}
+
+@keyframes girar {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.info-musica {
+    font-family: 'Segoe UI', sans-serif;
+    color: #222;
+}
+
+.escuchando {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 0.3rem;
+}
+
+.titulo-cancion {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.artista {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Mini widget */
+
+#mini-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.5s ease;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+#mini-widget.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#mini-widget.destacar {
+    animation: parpadeo 0.5s ease-in-out 4;
+}
+
+@keyframes parpadeo {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 rgba(207, 9, 9, 0.745);
+    }
+
+    50% {
+        box-shadow: 0 0 12px rgba(157, 0, 255, 0.7);
+    }
+}
+
+#mini-widget .info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#mini-widget .estado {
+    font-size: 1.5rem;
+}
+
+#mini-widget .texto p {
+    margin: 0;
+    line-height: 1.2;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+#mini-widget .titulo-mini {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+#mini-widget .artista-mini {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* Overlay y fondo */
+.inscripcion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+}
+
+.is-hidden {
+    display: none;
+}
+
+/* Caja modal */
+.inscripcion-modal {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.3);
+    animation: fadeInZoom 0.3s ease;
+}
+
+/* Botón cerrar */
+.cerrar-inscripcion {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Animación */
+@keyframes fadeInZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Inputs estilizados */
+.inscripcion-modal input[type="text"],
+.inscripcion-modal input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.inscripcion-modal input[type="submit"] {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}

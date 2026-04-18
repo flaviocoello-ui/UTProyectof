@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contáctanos</title>
+    <link rel="stylesheet" href="style_contactanos.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
+            </svg>
+            <nav>
+                <button onclick="location.href='conoce.html'">Conoce más</button>
+                <button onclick="location.href='Preguntas.html'">Preguntas frecuentes</button>
+                <button onclick="location.href='login.html'">Registrarse</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="inscripciones">
+        <h2>Contáctanos</h2>
+        <h4>¿Tienes alguna duda o sugerencia? ¡Envíanos un mensaje!</h4>
+
+        <form aria-label="Formulario de contacto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required><br>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br>
+
+            <button type="submit">Enviar mensaje</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Pie de página © 2025</p>
+    </footer>
+</body>
+
+</html>

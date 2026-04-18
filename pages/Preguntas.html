@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Preguntas Frecuentes</title>
+    <link rel="stylesheet" href="styles_preguntas.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Preguntas Frecuentes</h1>
+        <nav>
+            <button>Inicio</button>
+            <a href="Contactanos.html"><button>Contactanos</button></a>
+            <a href="login.html"><button>Registro</button></a>
+        </nav>
+    </header>
+
+    <div class="faq-container">
+        <h2>Resuelve tus dudas</h2>
+
+        <div class="faq-item">
+            <h4 onclick="toggleFaq(this)">¿Cómo me registro en un taller?</h4>
+            <p>Debes hacer clic en el botón "Registrarse", completar el formulario con tus datos y seleccionar el taller
+                deseado.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 onclick="toggleFaq(this)">¿Puedo cambiar la fecha del taller después de registrarme?</h4>
+            <p>Sí, puedes modificar la fecha desde la sección “Mi cuenta” hasta 24 horas antes del inicio del taller.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4 onclick="toggleFaq(this)">¿Los talleres tienen algún costo?</h4>
+            <p>Algunos talleres son gratuitos y otros tienen un costo que se detalla en la descripción de cada taller.
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <h4 onclick="toggleFaq(this)">¿Recibiré un certificado?</h4>
+            <p>Sí, al finalizar el taller y cumplir con los requisitos recibirás un certificado digital.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Pie de página © 2025</p>    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

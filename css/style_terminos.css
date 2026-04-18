@@ -1,0 +1,22 @@
+body{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+header{
+    background-color: #000000;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+.terminos{
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+a{
+    color: #007BFF;
+    text-decoration: none;
+}
