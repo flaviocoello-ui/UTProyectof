@@ -71,18 +71,65 @@
   <!--Primera sección-->
 
   <body>
+    <style>
+      body {
+        overflow-y: scroll;
+      }
+      .header-contenido {
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header-logo {
+        padding: 1rem 1rem;
+        display: flex;
+        align-items: center;
+      }
+      .header-logo img {
+        background-color: white;
+        box-shadow: 0 0 11px white;
+        border-radius: 50px;
+        width: 200px;
+        border: none;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: start;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+      }
+      .nav-links li a {
+        display: block;
+        text-decoration: none;
+        font-size: 1.7rem;
+        border: 2px solid white;
+        border-radius: 8px;
+        background-color: black;
+        padding: 5px 2rem;
+        color: white;
+        transition: 0.5s;
+      }
+      .nav-links li a:hover {
+        text-shadow: 0 0 15px white;
+        color: black;
+        background-color: white;
+        border: 2px solid black;
+        font-weight: 900;
+        transform: translateY(-0.2rem);
+      }
+    </style>
     <header>
-      <div class="header_contenido">
-        <div class="header_logo">
-          <a href="index.html">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Utplogonuevo.svg/1280px-Utplogonuevo.svg.png "
-              alt="logo utp"
-            />
-          </a>
+      <div class="header-contenido">
+        <div class="header-logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Utplogonuevo.svg/1280px-Utplogonuevo.svg.png"
+          />
         </div>
-        <nav class="header_nav">
-          <ul class="nav_links">
+        <nav class="header-nav">
+          <ul class="nav-links">
             <li><a href="index.html">Inicio</a></li>
             <li><a href="eventos_utp.html">Eventos</a></li>
             <li><a href="calendario_utp.html">Calendario</a></li>
