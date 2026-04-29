@@ -92,7 +92,7 @@ const botonEnviar = document.getElementById("button");
 const bienvenida = document.getElementById("bienvenida");
 const usuarioNombre = document.getElementById("usuarioNombre");
 
-/* Abrir moda */
+/* Abrir modal */
 document.getElementById("abrirModal").addEventListener("click", function () {
   modal.style.display = "block";
 });
@@ -110,64 +110,57 @@ window.addEventListener("click", function (event) {
 });
 
 // Mostrar modal solo si no se ha registrado antes
-if (!localStorage.getItem("registroCompletado")) {
+/* if (!localStorage.getItem("registroCompletado")) {
   modal.style.display = "block";
-}
+} */
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const nombre = document.getElementById("name").value.trim();
+  /* validación confirma contraseña */
   const pass = document.getElementById("contrasena").value;
   const passConfirm = document.getElementById("confirmar_contrasena").value;
-
   if (pass !== passConfirm) {
     alert("Las contraseñas no coinciden");
     return;
   }
 
-  // ✅ Validar que nombre y contraseña sean ambos "admin"
+  const usuario = {
+    nombre: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    contrasenia: document.getElementById("contrasena").value,
+    confirmarContrasenia: document.getElementById("confirmar_contrasena").value,
+  };
+
+  try {
+    const response = await fetch("http://localhost:8080/api/usuarios", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    });
+
+    const text = await response.text();
+    console.log(response.status);
+    console.log(text);
+    if (response.ok) {
+      alert("Usuario registrado correctamente");
+
+      modal.style.display = "none";
+      form.reset();
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  /* // ✅ Validar que nombre y contraseña sean ambos "admin"
   if (nombre.toLowerCase() === "admin" && pass === "admin") {
     localStorage.setItem("usuarioNombre", nombre);
     localStorage.setItem("registroCompletado", "true");
     localStorage.setItem("rol", "admin"); //  clave para validaciones futuras
     window.location.href = "calendario_utp.html";
     return;
-  }
-
-  botonEnviar.disabled = true;
-  botonEnviar.value = "Enviando...";
-
-  const serviceID = "default_service";
-  const templateID = "template_cawkm5a";
-
-  emailjs
-    .sendForm(serviceID, templateID, this)
-    .then(() => {
-      localStorage.setItem("usuarioNombre", nombre);
-      localStorage.setItem("rol", "usuario"); // ✅ rol estándar
-      botonEnviar.value = "¡Correo Enviado!";
-      botonEnviar.style.backgroundColor = "green";
-
-      // ✅ Marcar como registrado y ocultar modal
-      localStorage.setItem("registroCompletado", "true");
-      modal.style.display = "none";
-      usuarioNombre.textContent = nombre;
-      bienvenida.style.display = "block";
-
-      setTimeout(() => {
-        botonEnviar.disabled = false;
-        botonEnviar.value = "Send Email";
-        botonEnviar.style.backgroundColor = "black";
-        form.reset();
-      }, 3000);
-    })
-    .catch((error) => {
-      console.error("Error al enviar el formulario:", error);
-      botonEnviar.disabled = false;
-      botonEnviar.value = "Reintentar";
-      alert("Hubo un problema al enviar el correo. Intenta nuevamente.");
-    });
+  } */
 });
 
 window.addEventListener("DOMContentLoaded", () => {
