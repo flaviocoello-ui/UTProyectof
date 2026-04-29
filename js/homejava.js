@@ -38,6 +38,32 @@ function effectoTyping(words, elementId) {
   type();
 }
 
+//Barrido
+const bg = document.querySelector(".vacioUno .bg");
+
+const imagenes = [
+  "https://a-static.besthdwallpaper.com/spectacular-view-of-england-with-its-wonderful-nature-wallpaper-3840x2400-112606_9.jpg",
+  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600",
+  "https://wallpapercave.com/wp/wp2506793.jpg",
+  "https://images2.alphacoders.com/546/546449.jpg",
+];
+
+let index = 0;
+
+bg.style.backgroundImage = `url(${imagenes[0]})`;
+
+function cambiarImagen() {
+  bg.style.opacity = 0;
+
+  setTimeout(() => {
+    index = (index + 1) % imagenes.length;
+    bg.style.backgroundImage = `url(${imagenes[index]})`;
+    bg.style.opacity = 1;
+  }, 500);
+}
+
+setInterval(cambiarImagen, 4000);
+
 // Inactividad
 /* let tiempoInactividad;
 const tiempoLimite = 50000;
@@ -56,13 +82,32 @@ window.onload = reiniciarTemporizador;
   document.addEventListener(evt, reiniciarTemporizador),
 );
  */
+
 // Modo descanso
 
+//Modal
 const modal = document.getElementById("modalRegistro");
 const form = document.getElementById("form");
 const botonEnviar = document.getElementById("button");
 const bienvenida = document.getElementById("bienvenida");
 const usuarioNombre = document.getElementById("usuarioNombre");
+
+/* Abrir moda */
+document.getElementById("abrirModal").addEventListener("click", function () {
+  modal.style.display = "block";
+});
+
+/* Cerrar modal */
+document.getElementById("cerrarModal").addEventListener("click", function () {
+  modal.style.display = "none";
+});
+
+/* Cerrar modal click afuera */
+window.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
 
 // Mostrar modal solo si no se ha registrado antes
 if (!localStorage.getItem("registroCompletado")) {
@@ -154,84 +199,4 @@ function activarBlackTheme() {
     document.body.appendChild(overlay);
     localStorage.setItem("modoDescanso", "on");
   }
-}
-//Barrido
-
-const vacioUno = document.querySelector(".vacioUno");
-const vacioDos = document.querySelector(".vacioDos");
-
-const imagenesVacioUno = [
-  "https://a-static.besthdwallpaper.com/spectacular-view-of-england-with-its-wonderful-nature-wallpaper-3840x2400-112606_9.jpg",
-  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8NGslMjBuYXR1cmV8ZW58MHx8MHx8fDA%3D",
-  "https://wallpapercave.com/wp/wp2506793.jpg",
-  "https://images2.alphacoders.com/546/546449.jpg",
-];
-
-const imagenesVacioDos = [
-  "IMG/dos1.jpg",
-  "IMG/dos2.jpg",
-  "IMG/dos3.jpg",
-  "IMG/dos4.jpg",
-];
-
-function prepararFondoConFade(elemento, imagenes, intervalo) {
-  // Crear dos capas para alternar entre ellas
-  const capaA = document.createElement("div");
-  const capaB = document.createElement("div");
-
-  [capaA, capaB].forEach((capa) => {
-    Object.assign(capa.style, {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundAttachment: "fixed",
-      transition: "opacity 1s ease-in-out",
-      opacity: 0,
-      zIndex: 0,
-    });
-    elemento.appendChild(capa);
-  });
-
-  let index = 0;
-  let mostrando = capaA;
-  let ocultando = capaB;
-
-  // Precarga imágenes
-  imagenes.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-  mostrando.style.backgroundImage = `url(${imagenes[index]})`;
-  mostrando.style.opacity = 1;
-  mostrando.style.zIndex = 1;
-
-  setInterval(() => {
-    index = (index + 1) % imagenes.length;
-
-    ocultando.style.backgroundImage = `url(${imagenes[index]})`;
-    ocultando.style.opacity = 1;
-    ocultando.style.zIndex = 1;
-
-    mostrando.style.opacity = 0;
-    mostrando.style.zIndex = 0;
-
-    // Intercambiar referencias
-    [mostrando, ocultando] = [ocultando, mostrando];
-  }, intervalo);
-}
-
-// Estilos base para asegurar que vacioUno y vacioDos sean posicionados correctamente
-[vacioUno, vacioDos].forEach((el) => {
-  el.style.position = "relative";
-  el.style.overflow = "hidden";
-});
-if (vacioUno) {
-  prepararFondoConFade(vacioUno, imagenesVacioUno, 4000);
-}
-if (vacioDos) {
-  prepararFondoConFade(vacioDos, imagenesVacioDos, 9000);
 }
