@@ -133,6 +133,27 @@ nav a {
 /* =========================
    SECCIÓN HERO PRINCIPAL
    ========================= */
+
+.blinking-underscore::after {
+  content: "_";
+  animation: blinking 0.21s infinite;
+}
+.blinking-underscore.stop::after {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .hero {
   display: inline-flex;
   width: 100%;
@@ -143,8 +164,9 @@ nav a {
   height: 80rem;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   padding: 4.5rem 0rem 5rem 5rem;
+  background-color: red;
 }
 
 .heroUno {

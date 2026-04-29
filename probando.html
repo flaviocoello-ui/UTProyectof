@@ -20,6 +20,7 @@
         }
       }
     </style>
+
     <p id="text"></p>
     <div
       style="
@@ -61,5 +62,18 @@
 
       type(words);
     </script> -->
+    <script>
+      let word = "hola";
+      let el = document.getElementById("text");
+      function type() {
+        if (el.innerText == "") {
+          el.innerText = word;
+        } else {
+          el.innerText = "";
+        }
+        setTimeout(type, 2000);
+      }
+      type();
+    </script>
   </body>
 </html>

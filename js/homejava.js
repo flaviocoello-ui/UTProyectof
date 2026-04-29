@@ -1,66 +1,45 @@
-consoleText(["Inscríbete", "Explora", "Descubre", "Bienvenido a UTP"], "text", [
-  "black",
-]);
-
-function consoleText(words, id, colors) {
-  if (colors === undefined) colors = ["#fff"];
-  let visible = true;
-  let con = document.getElementById("console");
-  let letterCount = 1;
-  let x = 1;
-  let waiting = false;
-  let target = document.getElementById(id);
-  let colorIndex = 0;
+//Efecto Typing
+let words = ["Inscríbete", "Explora", "Descubre", "Bienvenido a UTP"];
+const elementId = "text";
+effectoTyping(words, elementId);
+function effectoTyping(words, elementId) {
+  const el = document.getElementById(elementId);
+  const underscore = document.getElementById("underscore");
   let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-  target.setAttribute("style", "color:" + colors[colorIndex]);
+  function type() {
+    let currentWord = words[wordIndex];
 
-  const typingInterval = setInterval(function () {
-    if (waiting) return;
-
-    const currentWord = words[wordIndex];
-
-    if (x === 1 && letterCount === currentWord.length + 1) {
-      if (wordIndex === words.length - 1) {
-        clearInterval(typingInterval);
-        clearInterval(blinkInterval);
-        con.className = "console-underscore hidden";
-        return;
-      }
-
-      waiting = true;
-      setTimeout(() => {
-        x = -1;
-        letterCount = currentWord.length;
-        waiting = false;
-      }, 1000);
-    } else if (x === -1 && letterCount === 0) {
-      target.innerHTML = "";
-      waiting = true;
-      setTimeout(() => {
-        wordIndex++;
-        colorIndex = (colorIndex + 1) % colors.length;
-        target.setAttribute("style", "color:" + colors[colorIndex]);
-        x = 1;
-        letterCount = 1;
-        waiting = false;
-      }, 1000);
+    if (!isDeleting) {
+      charIndex++;
     } else {
-      target.innerHTML = currentWord.slice(0, letterCount);
-      letterCount += x;
+      charIndex--;
     }
-  }, 120);
 
-  const blinkInterval = setInterval(function () {
-    con.className = visible
-      ? "console-underscore hidden"
-      : "console-underscore";
-    visible = !visible;
-  }, 400);
+    el.textContent = currentWord.slice(0, charIndex);
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      isDeleting = true;
+      underscore.classList.add("stop");
+      setTimeout(type, 1000);
+      return;
+    }
+
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      underscore.classList.remove("stop");
+    }
+
+    setTimeout(type, isDeleting ? 120 : 210);
+  }
+  type();
 }
 
 // Inactividad
-let tiempoInactividad;
+/* let tiempoInactividad;
 const tiempoLimite = 50000;
 
 function reiniciarTemporizador() {
@@ -76,7 +55,7 @@ window.onload = reiniciarTemporizador;
 ["mousemove", "keypress", "click", "scroll", "keydown"].forEach((evt) =>
   document.addEventListener(evt, reiniciarTemporizador),
 );
-
+ */
 // Modo descanso
 
 const modal = document.getElementById("modalRegistro");
@@ -250,6 +229,9 @@ function prepararFondoConFade(elemento, imagenes, intervalo) {
   el.style.position = "relative";
   el.style.overflow = "hidden";
 });
-
-prepararFondoConFade(vacioUno, imagenesVacioUno, 4000);
-prepararFondoConFade(vacioDos, imagenesVacioDos, 9000);
+if (vacioUno) {
+  prepararFondoConFade(vacioUno, imagenesVacioUno, 4000);
+}
+if (vacioDos) {
+  prepararFondoConFade(vacioDos, imagenesVacioDos, 9000);
+}
