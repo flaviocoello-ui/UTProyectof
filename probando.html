@@ -40,40 +40,15 @@
       <img src="/image/basquet.jpg" alt="Basquet" />
       <img src="/image/baile.jpg" alt="baile" />
     </div>
-    <!-- <script>
-      const element = document.getElementById("text");
-      const words = ["hola", "cómo", "estás?"];
-      let index = 0;
-      let increment = 1;
-      let wordIndex = 0;
-
-      function type(words) {
-        if (element.textContent === words[wordIndex]) {
-          increment = -1;
-        } else if (element.textContent == "") {
-          increment = +1;
-          wordIndex++;
-        }
-        index += increment;
-        element.textContent = words[wordIndex].slice(0, index);
-        console.log(index);
-        setTimeout(() => type(words), 100);
-      }
-
-      type(words);
-    </script> -->
+    <form action="">
+      <label for="contrasenia">Ingrese su contraseña:</label>
+      <input type="password" name="contrasenia" id="contrasenia" />
+    </form>
     <script>
-      let word = "hola";
-      let el = document.getElementById("text");
-      function type() {
-        if (el.innerText == "") {
-          el.innerText = word;
-        } else {
-          el.innerText = "";
-        }
-        setTimeout(type, 2000);
-      }
-      type();
+      const contrasenia = document.getElementById("contrasenia");
+      console.log(contrasenia.innerText);
+      console.log(contrasenia.value);
+      console.log(contrasenia);
     </script>
   </body>
 </html>

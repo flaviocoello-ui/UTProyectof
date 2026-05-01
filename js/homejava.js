@@ -124,12 +124,10 @@ form.addEventListener("submit", async function (e) {
     alert("Las contraseñas no coinciden");
     return;
   }
-
   const usuario = {
     nombre: document.getElementById("name").value,
     email: document.getElementById("email").value,
     contrasenia: document.getElementById("contrasena").value,
-    confirmarContrasenia: document.getElementById("confirmar_contrasena").value,
   };
 
   try {
@@ -146,13 +144,15 @@ form.addEventListener("submit", async function (e) {
     console.log(text);
     if (response.ok) {
       alert("Usuario registrado correctamente");
-
       modal.style.display = "none";
       form.reset();
+    } else {
+      alert("ERROR AL REGISTRAR EL USUARIO");
     }
   } catch (error) {
     console.log(error);
   }
+
   /* // ✅ Validar que nombre y contraseña sean ambos "admin"
   if (nombre.toLowerCase() === "admin" && pass === "admin") {
     localStorage.setItem("usuarioNombre", nombre);
