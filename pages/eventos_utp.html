@@ -14,10 +14,16 @@
 
   <body>
     <header>
-      <nav class="header">
-        <a href="index.html"><button>Inicio</button></a>
-        <a href="eventos_utp.html"> <button class="active">Eventos</button></a>
-        <a href="calendario_utp.html"><button>Calendario</button></a>
+      <nav class="header" aria-label="Navegación principal">
+        <ul class="header-nav-list">
+          <li><a class="nav-link" href="index.html">Inicio</a></li>
+          <li>
+            <a class="nav-link active" href="eventos_utp.html" aria-current="page"
+              >Eventos</a
+            >
+          </li>
+          <li><a class="nav-link" href="calendario_utp.html">Calendario</a></li>
+        </ul>
       </nav>
     </header>
     <!--Segunda Sección-->
