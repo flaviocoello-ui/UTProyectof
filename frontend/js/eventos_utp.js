@@ -106,7 +106,7 @@ function activarBlackTheme() {
 //Inactividad
 let tiempoInactividad;
 const tiempoLimite = 5000;
-let audio = new Audio("ASClouds.mp3");
+let audio = new Audio("../ASClouds.mp3");
 audio.loop = true;
 audio.volume = 0.2;
 
