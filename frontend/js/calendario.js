@@ -1,12 +1,29 @@
 // ==============================
 // VARIABLES GLOBALES
 // ==============================
+
+//----------------------------
+//---------------------------------------
+//-----------------------------------------------
+console.log("JS cargado OK");
 let mesSeleccionado = "";
 let chartInstance = null;
 
 // Inicializar elementos del DOM cuando la página cargue
-let contenedorEventos, modal, modalStats, btnFlotante, btnEventosInscritos, form, cerrar, cerrarStats;
-let adminCodeForm, adminCodeInput, adminError, modalTitle, adminPanel, listaEventosEliminar;
+let contenedorEventos,
+  modal,
+  modalStats,
+  btnFlotante,
+  btnEventosInscritos,
+  form,
+  cerrar,
+  cerrarStats;
+let adminCodeForm,
+  adminCodeInput,
+  adminError,
+  modalTitle,
+  adminPanel,
+  listaEventosEliminar;
 
 // Función para inicializar elementos del DOM
 function initializeElements() {
@@ -25,6 +42,75 @@ function initializeElements() {
   adminPanel = document.getElementById("adminPanel");
   listaEventosEliminar = document.getElementById("listaEventosEliminar");
 }
+//
+
+//
+
+//
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeElements();
+  const eventosDefinidos = {
+    futbol: {
+      nombre_evento: "Campeonato de Fútbol",
+      descripcion: "Torneo interfacultades UTP",
+    },
+    voley: {
+      nombre_evento: "Torneo de Vóley",
+      descripcion: "Competencia deportiva universitaria",
+    },
+    ajedrez: {
+      nombre_evento: "Torneo de Ajedrez",
+      descripcion: "Competencia estratégica",
+    },
+    cine: {
+      nombre_evento: "Muestra de Cine",
+      descripcion: "Proyección de películas",
+    },
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const tipo = document.getElementById("tipo").value;
+    const dia = document.getElementById("dia").value;
+
+    if (!mesSeleccionado || !tipo || !dia) {
+      alert("Completa todos los campos correctamente.");
+      return;
+    }
+
+    const eventoBase = eventosDefinidos[tipo];
+
+    if (!eventoBase) {
+      alert("Evento no válido");
+      return;
+    }
+
+    try {
+      await axios.post("http://localhost:8080/calendario", {
+        nombre_evento: eventoBase.nombre_evento,
+        descripcion: eventoBase.descripcion,
+        dia: dia,
+        mes: mesSeleccionado,
+        tipo: tipo,
+      });
+
+      form.reset();
+      modal.classList.remove("show");
+
+      await mostrarEventosGuardados();
+    } catch (error) {
+      console.error(error);
+      alert("Error al guardar en BD");
+    }
+  });
+});
+//
+
+//
+
+//
 
 // Mostrar u ocultar el botón de agregar evento según el rol
 function checkAdminRole() {
@@ -34,7 +120,6 @@ function checkAdminRole() {
   //   btnFlotante.style.display = "none";
   // }
 }
-
 
 // Nombres, imágenes y categorías de eventos
 const nombres = {
@@ -66,258 +151,307 @@ const nombres = {
   donacion: "Campaña de Donación",
   feria: "Feria Comunitaria",
   picnic: "Picnic Estudiantil",
-  juegos: "Juegos Recreativos"
+  juegos: "Juegos Recreativos",
 };
 
 const imagenes = {
-  futbol: "image/futbol.jpg",
-  voley: "image/voley.jpg",
-  basquet: "image/basquet.jpg",
-  ajedrez: "image/ajedrez.jpg",
-  boxeo: "image/boxeo.jpg",
-  karate: "image/karate.jpg",
-  natacion: "image/natacion.jpg",
-  atletismo: "image/atletismo.jpg",
-  conferencia: "image/conferencia.jpg",
-  taller: "image/taller.jpg",
-  hackathon: "image/hackathon.jpg",
-  exposicion: "image/exposicion.jpg",
-  foro: "image/foro.jpg",
-  debate: "image/debate.jpg",
-  musica: "image/musica.jpg",
-  baile: "image/baile.jpg",
-  canto: "image/canto.jpg",
-  teatro: "image/teatro.jpg",
-  pintura: "image/pintura.jpg",
-  cine: "image/cine.jpg",
-  poesia: "image/poesia.jpg",
-  empleos: "image/empleos.jpg",
-  networking: "image/networking.jpg",
-  charla: "image/charla.jpg",
-  voluntariado: "image/voluntariado.jpg",
-  donacion: "image/donacion.jpg",
-  feria: "image/feria.jpg",
-  picnic: "image/picnic.jpg",
-  juegos: "image/juegos.jpg"
+  futbol: "../image/futbol.jpg",
+  voley: "../image/voley.jpg",
+  basquet: "../image/basquet.jpg",
+  ajedrez: "../image/ajedrez.jpg",
+  boxeo: "../image/boxeo.jpg",
+  karate: "../image/karate.jpg",
+  natacion: "../image/natacion.jpg",
+  atletismo: "../image/atletismo.jpg",
+  conferencia: "../image/conferencia.jpg",
+  taller: "../image/taller.jpg",
+  hackathon: "../image/hackathon.jpg",
+  exposicion: "../image/exposicion.jpg",
+  foro: "../image/foro.jpg",
+  debate: "../image/debate.jpg",
+  musica: "../image/musica.jpg",
+  baile: "../image/baile.jpg",
+  canto: "../image/canto.jpg",
+  teatro: "../image/teatro.jpg",
+  pintura: "../image/pintura.jpg",
+  cine: "../image/cine.jpg",
+  poesia: "../image/poesia.jpg",
+  empleos: "../image/empleos.jpg",
+  networking: "../image/networking.jpg",
+  charla: "../image/charla.jpg",
+  voluntariado: "../image/voluntariado.jpg",
+  donacion: "../image/donacion.jpg",
+  feria: "../image/feria.jpg",
+  picnic: "../image/picnic.jpg",
+  juegos: "../image/juegos.jpg",
 };
 
 const categorias = {
-  futbol: "deportes", voley: "deportes", basquet: "deportes", ajedrez: "deportes",
-  boxeo: "deportes", karate: "deportes", natacion: "deportes", atletismo: "deportes",
-  conferencia: "academico", taller: "academico", hackathon: "academico",
-  exposicion: "academico", foro: "academico", debate: "academico",
-  musica: "artistico", baile: "artistico", canto: "artistico", teatro: "artistico",
-  pintura: "artistico", cine: "artistico", poesia: "artistico",
-  empleos: "desarrollo", networking: "desarrollo", charla: "desarrollo",
-  voluntariado: "comunitario", donacion: "comunitario", feria: "comunitario",
-  picnic: "recreativos", juegos: "recreativos"
+  futbol: "deportes",
+  voley: "deportes",
+  basquet: "deportes",
+  ajedrez: "deportes",
+  boxeo: "deportes",
+  karate: "deportes",
+  natacion: "deportes",
+  atletismo: "deportes",
+  conferencia: "academico",
+  taller: "academico",
+  hackathon: "academico",
+  exposicion: "academico",
+  foro: "academico",
+  debate: "academico",
+  musica: "artistico",
+  baile: "artistico",
+  canto: "artistico",
+  teatro: "artistico",
+  pintura: "artistico",
+  cine: "artistico",
+  poesia: "artistico",
+  empleos: "desarrollo",
+  networking: "desarrollo",
+  charla: "desarrollo",
+  voluntariado: "comunitario",
+  donacion: "comunitario",
+  feria: "comunitario",
+  picnic: "recreativos",
+  juegos: "recreativos",
 };
 
 // Descripciones detalladas de eventos
 const descripciones = {
   futbol: {
-    descripcion: "Únete al emocionante mundo del fútbol universitario. Desarrolla tus habilidades técnicas, tácticas y físicas mientras formas parte de un equipo competitivo.",
+    descripcion:
+      "Únete al emocionante mundo del fútbol universitario. Desarrolla tus habilidades técnicas, tácticas y físicas mientras formas parte de un equipo competitivo.",
     horario: "Lunes a Viernes: 4:00 PM - 6:00 PM",
     lugar: "Campo deportivo principal",
     requisitos: "Certificado médico, ropa deportiva adecuada",
-    instructor: "Prof. Carlos Mendoza"
+    instructor: "Prof. Carlos Mendoza",
   },
   voley: {
-    descripcion: "Participa en entrenamientos intensivos de voleibol. Mejora tu técnica de saque, recepción, armado y remate en un ambiente competitivo y divertido.",
+    descripcion:
+      "Participa en entrenamientos intensivos de voleibol. Mejora tu técnica de saque, recepción, armado y remate en un ambiente competitivo y divertido.",
     horario: "Martes y Jueves: 5:00 PM - 7:00 PM",
     lugar: "Gimnasio universitario",
     requisitos: "Zapatillas deportivas, rodilleras (opcional)",
-    instructor: "Prof. Ana García"
+    instructor: "Prof. Ana García",
   },
   basquet: {
-    descripcion: "Desarrolla tus habilidades en el básquetbol universitario. Aprende estrategias de juego, mejora tu técnica de tiro y forma parte de un equipo competitivo.",
+    descripcion:
+      "Desarrolla tus habilidades en el básquetbol universitario. Aprende estrategias de juego, mejora tu técnica de tiro y forma parte de un equipo competitivo.",
     horario: "Lunes, Miércoles y Viernes: 6:00 PM - 8:00 PM",
     lugar: "Cancha de básquetbol",
     requisitos: "Zapatillas de básquet, ropa deportiva",
-    instructor: "Prof. Miguel Torres"
+    instructor: "Prof. Miguel Torres",
   },
   ajedrez: {
-    descripcion: "Perfecciona tu estrategia y táctica en el ajedrez. Participa en torneos internos, aprende nuevas aperturas y mejora tu ranking ELO.",
+    descripcion:
+      "Perfecciona tu estrategia y táctica en el ajedrez. Participa en torneos internos, aprende nuevas aperturas y mejora tu ranking ELO.",
     horario: "Miércoles: 3:00 PM - 5:00 PM, Sábados: 10:00 AM - 12:00 PM",
     lugar: "Aula 205 - Edificio académico",
     requisitos: "Conocimientos básicos de ajedrez",
-    instructor: "Maestro Internacional Roberto Silva"
+    instructor: "Maestro Internacional Roberto Silva",
   },
   boxeo: {
-    descripcion: "Entrena en el noble arte del boxeo. Desarrolla disciplina, resistencia física y técnicas de combate en un ambiente seguro y profesional.",
+    descripcion:
+      "Entrena en el noble arte del boxeo. Desarrolla disciplina, resistencia física y técnicas de combate en un ambiente seguro y profesional.",
     horario: "Martes y Jueves: 7:00 PM - 9:00 PM",
     lugar: "Gimnasio de boxeo",
     requisitos: "Certificado médico, vendas, protector bucal",
-    instructor: "Prof. Luis Ramírez"
+    instructor: "Prof. Luis Ramírez",
   },
   karate: {
-    descripcion: "Aprende el arte marcial del karate. Desarrolla disciplina mental, técnicas de defensa personal y participa en competencias universitarias.",
+    descripcion:
+      "Aprende el arte marcial del karate. Desarrolla disciplina mental, técnicas de defensa personal y participa en competencias universitarias.",
     horario: "Lunes y Miércoles: 7:00 PM - 9:00 PM",
     lugar: "Dojo universitario",
     requisitos: "Gi (uniforme de karate), disciplina y respeto",
-    instructor: "Sensei María Yoshida"
+    instructor: "Sensei María Yoshida",
   },
   natacion: {
-    descripcion: "Mejora tu técnica de natación en los cuatro estilos. Participa en competencias y desarrolla resistencia cardiovascular excepcional.",
+    descripcion:
+      "Mejora tu técnica de natación en los cuatro estilos. Participa en competencias y desarrolla resistencia cardiovascular excepcional.",
     horario: "Lunes a Viernes: 6:00 AM - 8:00 AM",
     lugar: "Piscina olímpica universitaria",
     requisitos: "Traje de baño, gorro, gafas de natación",
-    instructor: "Prof. Carmen Aquino"
+    instructor: "Prof. Carmen Aquino",
   },
   atletismo: {
-    descripcion: "Desarrolla tus habilidades en diversas disciplinas atléticas: carreras, saltos, lanzamientos. Prepárate para competencias interuniversitarias.",
+    descripcion:
+      "Desarrolla tus habilidades en diversas disciplinas atléticas: carreras, saltos, lanzamientos. Prepárate para competencias interuniversitarias.",
     horario: "Martes, Jueves y Sábados: 5:00 AM - 7:00 AM",
     lugar: "Pista atlética",
     requisitos: "Zapatillas de atletismo, ropa deportiva",
-    instructor: "Prof. Diego Velasco"
+    instructor: "Prof. Diego Velasco",
   },
   conferencia: {
-    descripcion: "Asiste a conferencias magistrales con expertos reconocidos. Amplía tu conocimiento académico y profesional en diversas áreas del saber.",
+    descripcion:
+      "Asiste a conferencias magistrales con expertos reconocidos. Amplía tu conocimiento académico y profesional en diversas áreas del saber.",
     horario: "Según programación mensual",
     lugar: "Auditorio principal",
     requisitos: "Registro previo obligatorio",
-    instructor: "Conferencistas invitados"
+    instructor: "Conferencistas invitados",
   },
   taller: {
-    descripcion: "Participa en talleres prácticos diseñados para desarrollar habilidades específicas. Aprende haciendo en un ambiente colaborativo.",
+    descripcion:
+      "Participa en talleres prácticos diseñados para desarrollar habilidades específicas. Aprende haciendo en un ambiente colaborativo.",
     horario: "Sábados: 9:00 AM - 12:00 PM",
     lugar: "Laboratorios especializados",
     requisitos: "Materiales según el taller específico",
-    instructor: "Especialistas por área"
+    instructor: "Especialistas por área",
   },
   hackathon: {
-    descripcion: "Participa en el evento de programación más emocionante del año. Desarrolla soluciones innovadoras en 48 horas intensivas de código.",
+    descripcion:
+      "Participa en el evento de programación más emocionante del año. Desarrolla soluciones innovadoras en 48 horas intensivas de código.",
     horario: "Viernes 6:00 PM - Domingo 6:00 PM",
     lugar: "Laboratorio de cómputo principal",
     requisitos: "Laptop, conocimientos de programación",
-    instructor: "Mentores especializados"
+    instructor: "Mentores especializados",
   },
   exposicion: {
-    descripcion: "Presenta tus proyectos académicos y de investigación. Comparte tu conocimiento con la comunidad universitaria en un evento formal.",
+    descripcion:
+      "Presenta tus proyectos académicos y de investigación. Comparte tu conocimiento con la comunidad universitaria en un evento formal.",
     horario: "Según cronograma académico",
     lugar: "Hall principal",
     requisitos: "Proyecto aprobado por coordinación",
-    instructor: "Docentes evaluadores"
+    instructor: "Docentes evaluadores",
   },
   foro: {
-    descripcion: "Participa en debates académicos sobre temas de actualidad. Desarrolla tu pensamiento crítico y habilidades de argumentación.",
+    descripcion:
+      "Participa en debates académicos sobre temas de actualidad. Desarrolla tu pensamiento crítico y habilidades de argumentación.",
     horario: "Último viernes del mes: 4:00 PM - 6:00 PM",
     lugar: "Aula magna",
     requisitos: "Preparación previa del tema",
-    instructor: "Moderadores académicos"
+    instructor: "Moderadores académicos",
   },
   debate: {
-    descripcion: "Forma parte del equipo de debate universitario. Desarrolla habilidades de oratoria, investigación y argumentación lógica.",
+    descripcion:
+      "Forma parte del equipo de debate universitario. Desarrolla habilidades de oratoria, investigación y argumentación lógica.",
     horario: "Miércoles: 5:00 PM - 7:00 PM",
     lugar: "Aula de debates",
     requisitos: "Examen de admisión al equipo",
-    instructor: "Prof. Patricia Morales"
+    instructor: "Prof. Patricia Morales",
   },
   musica: {
-    descripcion: "Desarrolla tu talento musical en un ambiente académico. Participa en ensambles, conciertos y eventos culturales universitarios.",
+    descripcion:
+      "Desarrolla tu talento musical en un ambiente académico. Participa en ensambles, conciertos y eventos culturales universitarios.",
     horario: "Martes y Jueves: 4:00 PM - 6:00 PM",
     lugar: "Aula de música",
     requisitos: "Instrumento propio (según especialidad)",
-    instructor: "Maestro Fernando Castillo"
+    instructor: "Maestro Fernando Castillo",
   },
   baile: {
-    descripcion: "Aprende diversos estilos de danza y participa en presentaciones universitarias. Desarrolla expresión corporal y coordinación.",
+    descripcion:
+      "Aprende diversos estilos de danza y participa en presentaciones universitarias. Desarrolla expresión corporal y coordinación.",
     horario: "Lunes y Miércoles: 6:00 PM - 8:00 PM",
     lugar: "Estudio de danza",
     requisitos: "Ropa cómoda, zapatillas de danza",
-    instructor: "Prof. Isabella Rodríguez"
+    instructor: "Prof. Isabella Rodríguez",
   },
   canto: {
-    descripcion: "Desarrolla tu técnica vocal y participa en el coro universitario. Aprende repertorio clásico y contemporáneo.",
+    descripcion:
+      "Desarrolla tu técnica vocal y participa en el coro universitario. Aprende repertorio clásico y contemporáneo.",
     horario: "Viernes: 5:00 PM - 7:00 PM",
     lugar: "Aula de música vocal",
     requisitos: "Audición previa",
-    instructor: "Maestra Sofía Herrera"
+    instructor: "Maestra Sofía Herrera",
   },
   teatro: {
-    descripcion: "Explora el arte dramático y participa en producciones teatrales universitarias. Desarrolla habilidades actorales y de expresión.",
+    descripcion:
+      "Explora el arte dramático y participa en producciones teatrales universitarias. Desarrolla habilidades actorales y de expresión.",
     horario: "Sábados: 2:00 PM - 5:00 PM",
     lugar: "Teatro universitario",
     requisitos: "Audición y compromiso con ensayos",
-    instructor: "Director Artístico Juan Pérez"
+    instructor: "Director Artístico Juan Pérez",
   },
   pintura: {
-    descripcion: "Desarrolla tu creatividad artística a través de diferentes técnicas pictóricas. Participa en exposiciones estudiantiles.",
+    descripcion:
+      "Desarrolla tu creatividad artística a través de diferentes técnicas pictóricas. Participa en exposiciones estudiantiles.",
     horario: "Jueves: 3:00 PM - 6:00 PM",
     lugar: "Taller de artes plásticas",
     requisitos: "Materiales básicos de pintura",
-    instructor: "Artista Plástico Elena Vargas"
+    instructor: "Artista Plástico Elena Vargas",
   },
   cine: {
-    descripcion: "Participa en el cine club universitario. Analiza obras cinematográficas y desarrolla pensamiento crítico sobre el séptimo arte.",
+    descripcion:
+      "Participa en el cine club universitario. Analiza obras cinematográficas y desarrolla pensamiento crítico sobre el séptimo arte.",
     horario: "Viernes: 7:00 PM - 10:00 PM",
     lugar: "Auditorio de cine",
     requisitos: "Interés por el análisis cinematográfico",
-    instructor: "Crítico de cine Andrés Molina"
+    instructor: "Crítico de cine Andrés Molina",
   },
   poesia: {
-    descripcion: "Desarrolla tu expresión literaria y participa en recitales poéticos. Explora diferentes corrientes y técnicas poéticas.",
+    descripcion:
+      "Desarrolla tu expresión literaria y participa en recitales poéticos. Explora diferentes corrientes y técnicas poéticas.",
     horario: "Miércoles: 6:00 PM - 8:00 PM",
     lugar: "Biblioteca - Sala de lectura",
     requisitos: "Portafolio de poemas propios",
-    instructor: "Poeta Laureado Carmen Delgado"
+    instructor: "Poeta Laureado Carmen Delgado",
   },
   empleos: {
-    descripcion: "Participa en la feria de empleos más importante del año. Conecta con empresas líderes y encuentra oportunidades laborales.",
+    descripcion:
+      "Participa en la feria de empleos más importante del año. Conecta con empresas líderes y encuentra oportunidades laborales.",
     horario: "Día completo según programación",
     lugar: "Campus principal - Área de exposiciones",
     requisitos: "CV actualizado, vestimenta formal",
-    instructor: "Coordinadores de empresas participantes"
+    instructor: "Coordinadores de empresas participantes",
   },
   networking: {
-    descripcion: "Desarrolla tu red profesional en eventos de networking. Conecta con profesionales, egresados y empresarios exitosos.",
+    descripcion:
+      "Desarrolla tu red profesional en eventos de networking. Conecta con profesionales, egresados y empresarios exitosos.",
     horario: "Último jueves del mes: 6:00 PM - 9:00 PM",
     lugar: "Salón de eventos",
     requisitos: "Tarjetas de presentación, vestimenta ejecutiva",
-    instructor: "Facilitadores profesionales"
+    instructor: "Facilitadores profesionales",
   },
   charla: {
-    descripcion: "Asiste a charlas magistrales con líderes empresariales. Aprende sobre tendencias del mercado y desarrollo profesional.",
+    descripcion:
+      "Asiste a charlas magistrales con líderes empresariales. Aprende sobre tendencias del mercado y desarrollo profesional.",
     horario: "Según calendario de invitados",
     lugar: "Auditorio empresarial",
     requisitos: "Registro previo",
-    instructor: "Ejecutivos y empresarios invitados"
+    instructor: "Ejecutivos y empresarios invitados",
   },
   voluntariado: {
-    descripcion: "Participa en actividades de responsabilidad social. Contribuye al desarrollo de tu comunidad mientras desarrollas valores ciudadanos.",
+    descripcion:
+      "Participa en actividades de responsabilidad social. Contribuye al desarrollo de tu comunidad mientras desarrollas valores ciudadanos.",
     horario: "Sábados: 8:00 AM - 2:00 PM",
     lugar: "Comunidades locales",
     requisitos: "Compromiso social, disponibilidad de tiempo",
-    instructor: "Coordinadores de proyectos sociales"
+    instructor: "Coordinadores de proyectos sociales",
   },
   donacion: {
-    descripcion: "Organiza y participa en campañas de donación para causas benéficas. Desarrolla conciencia social y solidaridad.",
+    descripcion:
+      "Organiza y participa en campañas de donación para causas benéficas. Desarrolla conciencia social y solidaridad.",
     horario: "Según cronograma de campañas",
     lugar: "Diversos puntos del campus",
     requisitos: "Espíritu solidario",
-    instructor: "Comité de responsabilidad social"
+    instructor: "Comité de responsabilidad social",
   },
   feria: {
-    descripcion: "Participa en ferias comunitarias que promueven el intercambio cultural y comercial. Conoce emprendimientos locales.",
+    descripcion:
+      "Participa en ferias comunitarias que promueven el intercambio cultural y comercial. Conoce emprendimientos locales.",
     horario: "Fines de semana según programación",
     lugar: "Plaza principal del campus",
     requisitos: "Participación voluntaria",
-    instructor: "Organizadores comunitarios"
+    instructor: "Organizadores comunitarios",
   },
   picnic: {
-    descripcion: "Disfruta de actividades recreativas al aire libre. Fortalece lazos de amistad en un ambiente relajado y divertido.",
+    descripcion:
+      "Disfruta de actividades recreativas al aire libre. Fortalece lazos de amistad en un ambiente relajado y divertido.",
     horario: "Domingos: 10:00 AM - 4:00 PM",
     lugar: "Áreas verdes del campus",
     requisitos: "Comida para compartir, actitud positiva",
-    instructor: "Comité estudiantil de recreación"
+    instructor: "Comité estudiantil de recreación",
   },
   juegos: {
-    descripcion: "Participa en torneos de juegos recreativos y de mesa. Desarrolla estrategia, competencia sana y compañerismo.",
+    descripcion:
+      "Participa en torneos de juegos recreativos y de mesa. Desarrolla estrategia, competencia sana y compañerismo.",
     horario: "Viernes: 3:00 PM - 6:00 PM",
     lugar: "Sala de juegos estudiantil",
     requisitos: "Espíritu competitivo y fair play",
-    instructor: "Coordinadores estudiantiles"
-  }
+    instructor: "Coordinadores estudiantiles",
+  },
 };
 
 // ==============================
@@ -327,9 +461,18 @@ const descripciones = {
 // Mostrar eventos por mes
 function mostrarEventos(mesTexto) {
   const meses = [
-    "enero", "febrero", "marzo", "abril",
-    "mayo", "junio", "julio", "agosto",
-    "setiembre", "octubre", "noviembre", "diciembre"
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "setiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
   ];
   const mesNumero = (meses.indexOf(mesTexto) + 1).toString().padStart(2, "0");
   mesSeleccionado = mesNumero;
@@ -340,36 +483,38 @@ function mostrarEventos(mesTexto) {
 function mostrarEventosGuardados() {
   const eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
   const contenedor = document.getElementById("eventos");
-  
+
   if (!contenedor) {
     console.error("No se encontró el contenedor de eventos");
     return;
   }
-  
+
   contenedor.innerHTML = "";
-  
-  const eventosFiltrados = eventos.filter(e => e.mes === mesSeleccionado);
-  
+
+  const eventosFiltrados = eventos.filter((e) => e.mes === mesSeleccionado);
+
   if (eventosFiltrados.length === 0) {
     contenedor.innerHTML = "<p>No hay eventos programados para este mes</p>";
     return;
   }
-  
-  eventosFiltrados.forEach(e => {
+
+  eventosFiltrados.forEach((e) => {
     const div = document.createElement("div");
-    div.className = `evento categoria-${e.tipo} categoria-${categorias[e.tipo] || 'otros'}`;
+    div.className = `evento categoria-${e.tipo} categoria-${categorias[e.tipo] || "otros"}`;
 
     const descripcionEvento = descripciones[e.tipo] || {
       descripcion: "Descripción no disponible",
       horario: "Por definir",
       lugar: "Por definir",
       requisitos: "Ninguno específico",
-      instructor: "Por asignar"
+      instructor: "Por asignar",
     };
 
     // Verificar si el usuario ya está inscrito
-    const inscripciones = JSON.parse(localStorage.getItem("inscripciones") || "[]");
-    const yaInscrito = inscripciones.find(i => i.tipo === e.tipo);
+    const inscripciones = JSON.parse(
+      localStorage.getItem("inscripciones") || "[]",
+    );
+    const yaInscrito = inscripciones.find((i) => i.tipo === e.tipo);
 
     div.innerHTML = `
       <img src="${e.imagen}" alt="${e.tipo}">
@@ -381,12 +526,13 @@ function mostrarEventosGuardados() {
       <button class="btn-dropdown-arrow" onclick="toggleEventDescription(this)" aria-label="Ver descripción">
         <span class="arrow-icon">▼</span>
       </button>
-      ${yaInscrito ? 
-        `<div class="inscrito-container">
+      ${
+        yaInscrito
+          ? `<div class="inscrito-container">
           <span class="texto-inscrito">✅ Inscrito</span>
           <button class="btn-anular">Anular inscripción</button>
-        </div>` : 
-        `<button class="btn-inscribirme">Inscribirme</button>`
+        </div>`
+          : `<button class="btn-inscribirme">Inscribirme</button>`
       }
       <div class="evento-descripcion" style="display: none;">
         <div class="descripcion-content">
@@ -405,9 +551,18 @@ function mostrarEventosGuardados() {
 // Obtener nombre del mes
 function obtenerNombreMes(numero) {
   const nombres = {
-    "01": "enero", "02": "febrero", "03": "marzo", "04": "abril",
-    "05": "mayo", "06": "junio", "07": "julio", "08": "agosto",
-    "09": "setiembre", "10": "octubre", "11": "noviembre", "12": "diciembre"
+    "01": "enero",
+    "02": "febrero",
+    "03": "marzo",
+    "04": "abril",
+    "05": "mayo",
+    "06": "junio",
+    "07": "julio",
+    "08": "agosto",
+    "09": "setiembre",
+    10: "octubre",
+    11: "noviembre",
+    12: "diciembre",
   };
   return nombres[numero] || "";
 }
@@ -518,17 +673,17 @@ function setupEventListeners() {
 
       // Verificar si ya existe un evento del mismo tipo en el mismo día y mes
       let eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
-      
+
       // Asegurar que todos los eventos tengan ID
-      eventos = eventos.map(evento => {
+      eventos = eventos.map((evento) => {
         if (!evento.id) {
           evento.id = Date.now() + Math.random();
         }
         return evento;
       });
 
-      const eventoExistente = eventos.find(e => 
-        e.tipo === tipo && e.dia === dia && e.mes === mesSeleccionado
+      const eventoExistente = eventos.find(
+        (e) => e.tipo === tipo && e.dia === dia && e.mes === mesSeleccionado,
       );
 
       if (eventoExistente) {
@@ -542,7 +697,7 @@ function setupEventListeners() {
         dia,
         mes: mesSeleccionado,
         nombre: nombres[tipo],
-        imagen: imagenes[tipo]
+        imagen: imagenes[tipo],
       };
 
       eventos.push(evento);
@@ -558,14 +713,20 @@ function setupEventListeners() {
 
 // Función para resetear modal admin
 function resetearModalAdmin() {
-  if (adminCodeForm && adminPanel && adminError && adminCodeInput && modalTitle) {
+  if (
+    adminCodeForm &&
+    adminPanel &&
+    adminError &&
+    adminCodeInput &&
+    modalTitle
+  ) {
     adminCodeForm.style.display = "block";
     adminPanel.style.display = "none";
     adminError.style.display = "none";
     adminCodeInput.value = "";
     modalTitle.textContent = "Código de Administrador";
     // Resetear tabs
-    showTab('agregar');
+    showTab("agregar");
   }
 }
 
@@ -578,13 +739,13 @@ const ADMIN_CODE = "utp2025";
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar elementos del DOM
   initializeElements();
-  
+
   // Configurar event listeners
   setupEventListeners();
-  
+
   // Verificar rol de admin
   checkAdminRole();
-  
+
   // Verificar modo descanso
   if (localStorage.getItem("modoDescanso") === "on") {
     activarBlackTheme();
@@ -598,16 +759,18 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-inscribirme")) {
     const contenedor = e.target.parentElement;
     const eventoInfo = contenedor.querySelector(".evento-titulo").textContent;
-    
+
     // Guardar inscripción
-    const inscripciones = JSON.parse(localStorage.getItem("inscripciones") || "[]");
+    const inscripciones = JSON.parse(
+      localStorage.getItem("inscripciones") || "[]",
+    );
     const eventoTipo = contenedor.className.match(/categoria-(\w+)/)[1];
-    
-    if (!inscripciones.find(i => i.tipo === eventoTipo)) {
+
+    if (!inscripciones.find((i) => i.tipo === eventoTipo)) {
       inscripciones.push({
         tipo: eventoTipo,
         nombre: nombres[eventoTipo],
-        fecha: eventoInfo
+        fecha: eventoInfo,
       });
       localStorage.setItem("inscripciones", JSON.stringify(inscripciones));
     }
@@ -625,10 +788,12 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-anular")) {
     const contenedor = e.target.closest(".evento");
     const eventoTipo = contenedor.className.match(/categoria-(\w+)/)[1];
-    
+
     // Remover inscripción
-    let inscripciones = JSON.parse(localStorage.getItem("inscripciones") || "[]");
-    inscripciones = inscripciones.filter(i => i.tipo !== eventoTipo);
+    let inscripciones = JSON.parse(
+      localStorage.getItem("inscripciones") || "[]",
+    );
+    inscripciones = inscripciones.filter((i) => i.tipo !== eventoTipo);
     localStorage.setItem("inscripciones", JSON.stringify(inscripciones));
 
     // Refrescar la vista de eventos para asegurar que se actualice correctamente
@@ -640,9 +805,9 @@ document.addEventListener("click", (e) => {
     const eventoId = e.target.dataset.eventoId;
     if (confirm("¿Estás seguro de que quieres eliminar este evento?")) {
       let eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
-      eventos = eventos.filter(e => e.id != eventoId); // Usar != en lugar de !==
+      eventos = eventos.filter((e) => e.id != eventoId); // Usar != en lugar de !==
       localStorage.setItem("eventos", JSON.stringify(eventos));
-      
+
       mostrarEventosGuardados();
       actualizarListaEventosEliminar();
     }
@@ -654,35 +819,45 @@ document.addEventListener("click", (e) => {
 // ==============================
 function filtrarCategoria(categoria) {
   const eventos = document.querySelectorAll(".evento");
-  eventos.forEach(evento => {
-    if (categoria === "todos" || evento.classList.contains("categoria-" + categoria)) {
+  eventos.forEach((evento) => {
+    if (
+      categoria === "todos" ||
+      evento.classList.contains("categoria-" + categoria)
+    ) {
       evento.style.display = "flex";
     } else {
       evento.style.display = "none";
     }
   });
-  document.querySelectorAll('.categoria-dropdown').forEach(el => el.classList.remove('active'));
+  document
+    .querySelectorAll(".categoria-dropdown")
+    .forEach((el) => el.classList.remove("active"));
 }
 
 function toggleSubmenu(button) {
   const dropdown = button.parentElement;
-  document.querySelectorAll('.categoria-dropdown').forEach(el => {
-    if (el !== dropdown) el.classList.remove('active');
+  document.querySelectorAll(".categoria-dropdown").forEach((el) => {
+    if (el !== dropdown) el.classList.remove("active");
   });
-  dropdown.classList.toggle('active');
+  dropdown.classList.toggle("active");
 }
 
 // Cierra todos los submenús si haces clic fuera
-document.addEventListener('click', function (e) {
-  if (!e.target.closest('.categoria-dropdown')) {
-    document.querySelectorAll('.categoria-dropdown').forEach(el => el.classList.remove('active'));
+document.addEventListener("click", function (e) {
+  if (!e.target.closest(".categoria-dropdown")) {
+    document
+      .querySelectorAll(".categoria-dropdown")
+      .forEach((el) => el.classList.remove("active"));
   }
 });
 function toggleEventDescription(button) {
   const descripcion = button.parentElement.querySelector(".evento-descripcion");
   const arrow = button.querySelector(".arrow-icon");
 
-  if (descripcion.style.display === "none" || descripcion.style.display === "") {
+  if (
+    descripcion.style.display === "none" ||
+    descripcion.style.display === ""
+  ) {
     descripcion.style.display = "block";
     arrow.textContent = "▲"; // Flecha hacia arriba
   } else {
@@ -702,18 +877,20 @@ window.addEventListener("DOMContentLoaded", () => {
 // ==============================
 function showTab(tabName) {
   // Ocultar todos los tabs
-  document.querySelectorAll('.tab-content').forEach(tab => {
-    tab.classList.remove('active');
+  document.querySelectorAll(".tab-content").forEach((tab) => {
+    tab.classList.remove("active");
   });
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.classList.remove('active');
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.classList.remove("active");
   });
 
   // Mostrar tab seleccionado
-  document.getElementById('tab' + tabName.charAt(0).toUpperCase() + tabName.slice(1)).classList.add('active');
-  event.target.classList.add('active');
+  document
+    .getElementById("tab" + tabName.charAt(0).toUpperCase() + tabName.slice(1))
+    .classList.add("active");
+  event.target.classList.add("active");
 
-  if (tabName === 'eliminar') {
+  if (tabName === "eliminar") {
     actualizarListaEventosEliminar();
   }
 }
@@ -728,26 +905,28 @@ function actualizarListaEventosEliminar() {
   }
 
   let eventos = JSON.parse(localStorage.getItem("eventos") || "[]");
-  
+
   // Asegurar que todos los eventos tengan ID
-  eventos = eventos.map(evento => {
+  eventos = eventos.map((evento) => {
     if (!evento.id) {
       evento.id = Date.now() + Math.random();
     }
     return evento;
   });
-  
+
   // Guardar eventos actualizados
   localStorage.setItem("eventos", JSON.stringify(eventos));
-  
-  const eventosMes = eventos.filter(e => e.mes === mesSeleccionado);
+
+  const eventosMes = eventos.filter((e) => e.mes === mesSeleccionado);
 
   if (eventosMes.length === 0) {
     listaEventosEliminar.innerHTML = "<p>No hay eventos en este mes</p>";
     return;
   }
 
-  listaEventosEliminar.innerHTML = eventosMes.map(evento => `
+  listaEventosEliminar.innerHTML = eventosMes
+    .map(
+      (evento) => `
     <div class="evento-eliminar">
       <div class="evento-eliminar-info">
         <img src="${evento.imagen}" alt="${evento.tipo}">
@@ -758,35 +937,41 @@ function actualizarListaEventosEliminar() {
       </div>
       <button class="btn-eliminar" data-evento-id="${evento.id}">Eliminar</button>
     </div>
-  `).join('');
+  `,
+    )
+    .join("");
 }
 
 // ==============================
 // FUNCIONES PARA ESTADÍSTICAS
 // ==============================
 function actualizarEstadisticas() {
-  const inscripciones = JSON.parse(localStorage.getItem("inscripciones") || "[]");
-  
+  const inscripciones = JSON.parse(
+    localStorage.getItem("inscripciones") || "[]",
+  );
+
   if (inscripciones.length === 0) {
-    document.getElementById("statsDetails").innerHTML = "<p>No hay eventos inscritos aún</p>";
+    document.getElementById("statsDetails").innerHTML =
+      "<p>No hay eventos inscritos aún</p>";
     document.getElementById("totalInscritos").textContent = "0";
-    document.getElementById("listaEventosInscritos").innerHTML = "<p>No hay eventos inscritos</p>";
+    document.getElementById("listaEventosInscritos").innerHTML =
+      "<p>No hay eventos inscritos</p>";
     return;
   }
 
   // Contar eventos por categoría
   const categoriaCount = {};
   const colores = {
-    deportes: '#FF6384',
-    academico: '#36A2EB', 
-    artistico: '#FFCE56',
-    desarrollo: '#4BC0C0',
-    comunitario: '#9966FF',
-    recreativos: '#FF9F40'
+    deportes: "#FF6384",
+    academico: "#36A2EB",
+    artistico: "#FFCE56",
+    desarrollo: "#4BC0C0",
+    comunitario: "#9966FF",
+    recreativos: "#FF9F40",
   };
 
-  inscripciones.forEach(inscripcion => {
-    const categoria = categorias[inscripcion.tipo] || 'otros';
+  inscripciones.forEach((inscripcion) => {
+    const categoria = categorias[inscripcion.tipo] || "otros";
     categoriaCount[categoria] = (categoriaCount[categoria] || 0) + 1;
   });
 
@@ -798,7 +983,9 @@ function actualizarEstadisticas() {
   statsDetails.innerHTML = `
     <h3>Eventos por Categoría</h3>
     <ul>
-      ${Object.entries(categoriaCount).map(([categoria, count]) => `
+      ${Object.entries(categoriaCount)
+        .map(
+          ([categoria, count]) => `
         <li>
           <div class="evento-stat">
             <div class="evento-stat-color" style="background-color: ${colores[categoria]}"></div>
@@ -806,17 +993,22 @@ function actualizarEstadisticas() {
           </div>
           <span>${count}</span>
         </li>
-      `).join('')}
+      `,
+        )
+        .join("")}
     </ul>
   `;
 
   // Crear lista de eventos inscritos
-  const listaEventosInscritos = document.getElementById("listaEventosInscritos");
-  listaEventosInscritos.innerHTML = inscripciones.map(inscripcion => {
-    const categoria = categorias[inscripcion.tipo] || 'otros';
-    const colorCategoria = colores[categoria] || '#888';
-    
-    return `
+  const listaEventosInscritos = document.getElementById(
+    "listaEventosInscritos",
+  );
+  listaEventosInscritos.innerHTML = inscripciones
+    .map((inscripcion) => {
+      const categoria = categorias[inscripcion.tipo] || "otros";
+      const colorCategoria = colores[categoria] || "#888";
+
+      return `
       <div class="evento-inscrito-item">
         <img src="${imagenes[inscripcion.tipo]}" alt="${inscripcion.tipo}">
         <div class="evento-inscrito-info">
@@ -828,51 +1020,56 @@ function actualizarEstadisticas() {
         </div>
       </div>
     `;
-  }).join('');
+    })
+    .join("");
 
   // Crear gráfico
   crearGraficoCircular(categoriaCount, colores);
 }
 
 function crearGraficoCircular(data, colores) {
-  const ctx = document.getElementById('chartEventos').getContext('2d');
-  
+  const ctx = document.getElementById("chartEventos").getContext("2d");
+
   // Destruir gráfico anterior si existe
   if (chartInstance) {
     chartInstance.destroy();
   }
 
-  const labels = Object.keys(data).map(cat => cat.charAt(0).toUpperCase() + cat.slice(1));
+  const labels = Object.keys(data).map(
+    (cat) => cat.charAt(0).toUpperCase() + cat.slice(1),
+  );
   const valores = Object.values(data);
-  const backgroundColors = Object.keys(data).map(cat => colores[cat]);
+  const backgroundColors = Object.keys(data).map((cat) => colores[cat]);
 
   chartInstance = new Chart(ctx, {
-    type: 'doughnut',
+    type: "doughnut",
     data: {
       labels: labels,
-      datasets: [{
-        data: valores,
-        backgroundColor: backgroundColors,
-        borderColor: '#141414',
-        borderWidth: 2
-      }]
+      datasets: [
+        {
+          data: valores,
+          backgroundColor: backgroundColors,
+          borderColor: "#141414",
+          borderWidth: 2,
+        },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: 'bottom',
+          position: "bottom",
           labels: {
-            color: '#e0e0e0',
+            color: "#e0e0e0",
             padding: 20,
             font: {
-              size: 12
-            }
-          }
-        }
-      }
-    }
+              size: 12,
+            },
+          },
+        },
+      },
+    },
   });
 }
 
@@ -894,7 +1091,7 @@ function activarBlackTheme() {
       backgroundColor: "rgba(154, 144, 54, 0.26)",
       zIndex: 9999,
       pointerEvents: "none",
-      transition: "opacity 0.3s ease"
+      transition: "opacity 0.3s ease",
     });
     document.body.appendChild(overlay);
     localStorage.setItem("modoDescanso", "on");
@@ -906,7 +1103,7 @@ function activarBlackTheme() {
 // ==============================
 function inicializarEventosEjemplo() {
   const eventosExistentes = JSON.parse(localStorage.getItem("eventos") || "[]");
-  
+
   // Solo agregar eventos de ejemplo si no hay eventos guardados
   if (eventosExistentes.length === 0) {
     const eventosEjemplo = [
@@ -916,7 +1113,7 @@ function inicializarEventosEjemplo() {
         dia: "15",
         mes: "01",
         nombre: nombres.futbol,
-        imagen: imagenes.futbol
+        imagen: imagenes.futbol,
       },
       {
         id: Date.now() + 2,
@@ -924,7 +1121,7 @@ function inicializarEventosEjemplo() {
         dia: "20",
         mes: "01",
         nombre: nombres.voley,
-        imagen: imagenes.voley
+        imagen: imagenes.voley,
       },
       {
         id: Date.now() + 3,
@@ -932,7 +1129,7 @@ function inicializarEventosEjemplo() {
         dia: "25",
         mes: "01",
         nombre: nombres.conferencia,
-        imagen: imagenes.conferencia
+        imagen: imagenes.conferencia,
       },
       {
         id: Date.now() + 4,
@@ -940,7 +1137,7 @@ function inicializarEventosEjemplo() {
         dia: "10",
         mes: "02",
         nombre: nombres.musica,
-        imagen: imagenes.musica
+        imagen: imagenes.musica,
       },
       {
         id: Date.now() + 5,
@@ -948,10 +1145,10 @@ function inicializarEventosEjemplo() {
         dia: "14",
         mes: "02",
         nombre: nombres.hackathon,
-        imagen: imagenes.hackathon
-      }
+        imagen: imagenes.hackathon,
+      },
     ];
-    
+
     localStorage.setItem("eventos", JSON.stringify(eventosEjemplo));
   }
 }
