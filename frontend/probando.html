@@ -19,6 +19,10 @@
           transform: translateX(-395.39px);
         }
       }
+      .menu:hover ul {
+        display: block !important;
+        background-color: red;
+      }
     </style>
 
     <p id="text"></p>
@@ -44,6 +48,28 @@
       <label for="contrasenia">Ingrese su contraseña:</label>
       <input type="password" name="contrasenia" id="contrasenia" />
     </form>
+
+    <div
+      class="menu"
+      style="
+        width: 200px;
+        color: white;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        overflow: visible;
+      "
+    >
+      <button class="btn-menu">hola</button>
+      <ul style="display: none; position: absolute; top: 0; left: 0; margin: 0">
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+        <li>hola</li>
+      </ul>
+    </div>
+
     <script>
       const contrasenia = document.getElementById("contrasenia");
       console.log(contrasenia.innerText);
